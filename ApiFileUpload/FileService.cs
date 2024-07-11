@@ -20,6 +20,9 @@ namespace ApiFileUpload
             var blobUri = $"https://{storageAccount}.blob.core.windows.net";
             var blobServiceClient = new BlobServiceClient(new Uri(blobUri), credential);
             _fileContainer = blobServiceClient.GetBlobContainerClient("files");
+            
+            // Create the container if it doesn't exist
+            _fileContainer.CreateIfNotExists();
 
             //var credential = new StorageSharedKeyCredential (_storageAccount, _key);
             //var blobUri = $"https://{_storageAccount}.blob.core.windows.net";
