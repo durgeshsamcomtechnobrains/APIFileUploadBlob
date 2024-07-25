@@ -32,7 +32,6 @@ else
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
 
 app.UseRouting();
 
@@ -45,17 +44,3 @@ app.Run();
 
 //test1
 //test12
-try
-{
-    app.Run();
-}
-catch (Exception ex)
-{
-    var logger = app.Services.GetRequiredService<ILogger<Program>>();
-    logger.LogError(ex, "Application start-up failed");
-    throw;
-}
-
-
-//test2
-//testc
