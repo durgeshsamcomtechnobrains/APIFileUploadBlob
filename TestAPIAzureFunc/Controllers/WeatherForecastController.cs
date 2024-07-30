@@ -38,8 +38,8 @@ namespace TestAPIAzureFunc.Controllers
         [HttpPost]
         public async Task Post([FromBody] WeatherForecast weatherForecast)
         {            
-            string connectionString = ""; // Connection string for the Azure Queue Storage
-            string queueName = ""; // Name of the queue
+            string connectionString = "DefaultEndpointsProtocol=https;AccountName=scstorage090724;AccountKey=e62bjsv7s3aCj3kkY0ijZUrjbe+sheyXiEXRbk/111Tq2pw9wfNzBCHN08pYqS3wswNWxKO/Nrkv+AStVauwvA==;EndpointSuffix=core.windows.net"; // Connection string for the Azure Queue Storage
+            string queueName = "testqueue"; // Name of the queue
 
             var queueClient = new QueueClient(connectionString, queueName); // Creates a new QueueClient instance to interact with the specified queue
              

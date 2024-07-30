@@ -19,8 +19,8 @@ namespace BgServiceReadMsgFromQueue.Service
             {
                 this.logger.LogInformation("This is a test message from read Message Service...");
 
-                string connectionString = "";
-                string queueName = "";
+                string connectionString = "DefaultEndpointsProtocol=https;AccountName=scstorage090724;AccountKey=e62bjsv7s3aCj3kkY0ijZUrjbe+sheyXiEXRbk/111Tq2pw9wfNzBCHN08pYqS3wswNWxKO/Nrkv+AStVauwvA==;EndpointSuffix=core.windows.net"; // Connection string for the Azure Queue Storage
+                string queueName = "testqueue"; // Name of the queue                
 
                 var QueueClient = new QueueClient(connectionString,queueName);
 
@@ -35,13 +35,13 @@ namespace BgServiceReadMsgFromQueue.Service
                     
                     var weatherForecast = JsonSerializer.Deserialize<WeatherForecast>(messageBody); //Processing the message body
 
-                    await QueueClient.DeleteMessageAsync(message.Value.MessageId, message.Value.PopReceipt);
+                    //await QueueClient.DeleteMessageAsync(message.Value.MessageId, message.Value.PopReceipt);
 
-                    this.logger.LogInformation("Delete message from the queue with messageId ::" + message.Value.MessageId);                    
+                    //this.logger.LogInformation("Delete message from the queue with messageId ::" + message.Value.MessageId);                    
                 }                    
 
-                await Task.Delay(TimeSpan.FromSeconds(5));
-            }
+                await Task.Delay(TimeSpan.FromSeconds(5));                
+            }            
         }
 
     }
